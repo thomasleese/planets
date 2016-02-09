@@ -1,15 +1,13 @@
 package me.thomasleese.planets.util;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 
 public class ClockMarkerSprite extends OrbitSprite {
 
-    private static Texture TEXTURE =
-        new Texture(Gdx.files.internal("graphics/clock/marker.png"));
-
-    public ClockMarkerSprite(int index, float length) {
-        super(TEXTURE);
+    public ClockMarkerSprite(int index, float length, AssetManager assets) {
+        super(assets.get("graphics/clock/marker.png", Texture.class));
 
         setOrbitIndex(index);
         setOrigin(1f, getHeight() / 2f);
@@ -18,6 +16,10 @@ public class ClockMarkerSprite extends OrbitSprite {
 
     public void setLength(float length) {
         setScale(length, 0.4f);
+    }
+
+    public static void loadAssets(AssetManager assets) {
+        assets.load("graphics/clock/marker.png", Texture.class);
     }
 
 }

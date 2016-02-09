@@ -16,18 +16,18 @@ import me.thomasleese.planets.util.SizeManager;
 
 public class OrbitsLayer extends Layer {
 
-    private static final Texture TEXTURE = new Texture(Gdx.files.internal("graphics/orbit.png"));
-
-    private TextureRegion mTexture;
+    private TextureRegion mRingTexture;
+    private TextureRegion mRenderedTexture;
 
     @Override
     public void queueAssets(AssetManager assets) {
-
+        assets.load("graphics/orbits/orbit.png", Texture.class);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
-
+        Texture texture = assets.get("graphics/orbits/orbit.png");
+        mRingTexture = new TextureRegion(texture);
     }
 
     @Override
@@ -35,10 +35,10 @@ public class OrbitsLayer extends Layer {
         float halfSize = sizes.getOrbitLength(8);
         int size = (int) (halfSize * 2f);
 
-        FrameBuffer fbo = new FrameBuffer(Pixmap.Format.RGB565, size, size, false);
+        FrameBuffer fbo = new FrameBuffer(Pixmap.Format.RGBA8888, size, size, false);
 
-        mTexture = new TextureRegion(fbo.getColorBufferTexture());
-        mTexture.flip(false, true);
+        mRenderedTexture = new TextureRegion(fbo.getColorBufferTexture());
+        mRenderedTexture.flip(false, true);
 
         fbo.begin();
 
@@ -51,17 +51,15 @@ public class OrbitsLayer extends Layer {
         matrix.setToOrtho2D(-halfSize, -halfSize, size, size);
         batch.setProjectionMatrix(matrix);
 
-        TextureRegion texture = new TextureRegion(TEXTURE);
-
         RingShapeDrawer drawer = new RingShapeDrawer();
 
         batch.begin();
 
-        float w = 1.5f;
+        float w = 1f;
 
         for (int i = 0; i < 8; i++) {
             float radius = sizes.getOrbitLength(i);
-            drawer.draw(batch, texture, 0, 0, radius - w, radius + w);
+            drawer.draw(batch, mRingTexture, 0, 0, radius - w, radius + w);
         }
 
         batch.end();
@@ -75,7 +73,7 @@ public class OrbitsLayer extends Layer {
 
     public void render(Batch batch) {
         batch.begin();
-        batch.draw(mTexture, -mTexture.getRegionWidth() / 2, -mTexture.getRegionHeight() / 2);
+        batch.draw(mRenderedTexture, -mRenderedTexture.getRegionWidth() / 2, -mRenderedTexture.getRegionHeight() / 2);
         batch.end();
     }
 

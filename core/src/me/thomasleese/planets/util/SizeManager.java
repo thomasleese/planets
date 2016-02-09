@@ -11,8 +11,6 @@ public class SizeManager {
     private float mSunDiameter;
     private float mOrbitRadius;
     private float mOrbitGap;
-    private float mRocketScale;
-    private float mShootingStarScale;
 
     public SizeManager() {
 
@@ -32,9 +30,6 @@ public class SizeManager {
         mOrbitRadius = mSunDiameter * 2.5f;
 
         mOrbitGap = (halfSize - mOrbitRadius - outerMargin) / 7f;
-
-        mRocketScale = size / 5500f;
-        mShootingStarScale = size / 3000f;
     }
 
     public float getScreenSize() {
@@ -55,14 +50,6 @@ public class SizeManager {
 
     public float getOrbitLength(float times) {
         return mOrbitRadius + mOrbitGap * times;
-    }
-
-    public float getRocketScale() {
-        return mRocketScale;
-    }
-
-    public float getShootingStarScale() {
-        return mShootingStarScale;
     }
 
 }

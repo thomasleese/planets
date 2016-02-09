@@ -7,10 +7,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class SunSprite extends Sprite {
 
-    private static final float TEXTURE_SIZE = 133.3f;
+    private static final float TEXTURE_SIZE = 66.666667f;
 
     public SunSprite(AssetManager assets) {
-        super(assets.get("graphics/planets/sun.png", Texture.class));
+        super(assets.get("graphics/sprites/sun.png", Texture.class));
 
         setOriginCenter();
         setCenter(0, 0);
@@ -25,7 +25,7 @@ public class SunSprite extends Sprite {
     }
 
     public static void loadAssets(AssetManager assets) {
-        assets.load("graphics/planets/sun.png", Texture.class);
+        assets.load("graphics/sprites/sun.png", Texture.class);
     }
 
 }

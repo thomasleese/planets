@@ -39,21 +39,21 @@ public class Planets extends ApplicationAdapter {
 
         mSizes = new SizeManager();
 
-        //mTimerLayer = new TimerLayer();
+        mTimerLayer = new TimerLayer();
 
         mLayers.add(new BackgroundLayer());
-        //mLayers.add(new StarfieldLayer());
-        /*mLayers.add(new ClockLayer());
+        mLayers.add(new StarfieldLayer());
+        mLayers.add(new ClockLayer());
         mLayers.add(new OrbitsLayer());
         mLayers.add(mPlanetsLayer = new PlanetsLayer());
         mLayers.add(mRocketsLayer = new RocketsLayer(mTimerLayer));
         mLayers.add(new ShootingStarsLayer());
-        mLayers.add(mTimerLayer);*/
+        mLayers.add(mTimerLayer);
         mLayers.add(new HighlightShadowLayer());
 
-        /*InputMultiplexer input = new InputMultiplexer();
+        InputMultiplexer input = new InputMultiplexer();
         input.addProcessor(mRocketsLayer);
-        Gdx.input.setInputProcessor(input);*/
+        Gdx.input.setInputProcessor(input);
 
         mAssets = new AssetManager();
         for (Layer layer : mLayers) {
@@ -85,11 +85,11 @@ public class Planets extends ApplicationAdapter {
     public void render() {
         mSpriteBatch.setProjectionMatrix(mCamera.combined);
 
-        /*Calendar now = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
         if (mTimerLayer.isVisible()) {
             now.add(Calendar.HOUR, (int) (-mTimerLayer.getDuration() * 24f));
         }
-        mPlanetsLayer.setNow(now);*/
+        mPlanetsLayer.setNow(now);
 
         for (Layer layer : mLayers) {
             layer.render(mSpriteBatch);

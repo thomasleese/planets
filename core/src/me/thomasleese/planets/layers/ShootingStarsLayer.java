@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.luckycatlabs.sunrisesunset.SunriseSunsetCalculator;
 import com.luckycatlabs.sunrisesunset.dto.Location;
 import me.thomasleese.planets.util.ClockUtils;
-import me.thomasleese.planets.util.ShootingStarSprite;
+import me.thomasleese.planets.sprites.ShootingStarSprite;
 import me.thomasleese.planets.util.SizeManager;
 
 import java.util.Calendar;
@@ -21,19 +21,15 @@ public class ShootingStarsLayer extends Layer {
     private ShootingStarSprite mSunriseSprite;
     private ShootingStarSprite mSunsetSprite;
 
-    public ShootingStarsLayer() {
-        mSunriseSprite = new ShootingStarSprite();
-        mSunsetSprite = new ShootingStarSprite();
-    }
-
     @Override
     public void queueAssets(AssetManager assets) {
-
+        ShootingStarSprite.loadAssets(assets);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
-
+        mSunriseSprite = new ShootingStarSprite(assets);
+        mSunsetSprite = new ShootingStarSprite(assets);
     }
 
     @Override

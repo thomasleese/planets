@@ -22,9 +22,6 @@ public class TimerLayer extends Layer {
     private static final Texture TEXTURE_CIRCLE =
         new Texture(Gdx.files.internal("graphics/timer/circle.png"));
 
-    private static final Sound SOUND =
-        Gdx.audio.newSound(Gdx.files.internal("sounds/timer.mp3"));
-
     public enum State {
         INACTIVE,
         PREPARING,
@@ -48,7 +45,7 @@ public class TimerLayer extends Layer {
     }
 
     private void loadFonts() {
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/blogger-sans-500.ttf"));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Abel-Regular.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 22;
         mBigFont = generator.generateFont(parameter);
@@ -141,7 +138,6 @@ public class TimerLayer extends Layer {
                 mDuration -= Gdx.graphics.getDeltaTime();
                 if (mDuration <= 0) {
                     mState = State.INACTIVE;
-                    SOUND.play(2.0f);
                 }
             }
         }

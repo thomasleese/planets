@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import me.thomasleese.planets.util.ClockUtils;
-import me.thomasleese.planets.util.RocketSprite;
+import me.thomasleese.planets.sprites.RocketSprite;
 import me.thomasleese.planets.util.SizeManager;
 
 import java.util.Calendar;
@@ -27,22 +27,20 @@ public class RocketsLayer extends Layer implements InputProcessor {
     private TimerLayer mTimer;
 
     public RocketsLayer(TimerLayer timer) {
-        mMainSprite = new RocketSprite();
-
-        mGhostSprite = new RocketSprite();
-        mGhostSprite.setColor(0.75f, 0.75f, 0.75f, 0.75f);
-
         mTimer = timer;
     }
 
     @Override
     public void queueAssets(AssetManager assets) {
-
+        RocketSprite.loadAssets(assets);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
+        mMainSprite = new RocketSprite(assets);
 
+        mGhostSprite = new RocketSprite(assets);
+        mGhostSprite.setColor(0.75f, 0.75f, 0.75f, 0.75f);
     }
 
     @Override

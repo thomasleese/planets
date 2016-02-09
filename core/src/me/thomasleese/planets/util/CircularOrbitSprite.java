@@ -41,7 +41,7 @@ public class CircularOrbitSprite extends OrbitSprite {
 
         batch.begin();
 
-        float w = 3f;
+        float w = 1f;
         drawer.draw(batch, texture, 0, 0, radius - w, radius + w);
 
         batch.end();

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import me.thomasleese.planets.util.GlassBall;
 import me.thomasleese.planets.util.SizeManager;
-import me.thomasleese.planets.util.SunSprite;
+import me.thomasleese.planets.sprites.SunSprite;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -16,7 +16,7 @@ public class PlanetsLayer extends Layer {
     private static final Calendar J2000 = Calendar.getInstance();
 
     static {
-        J2000.set(2000, 0, 0, 0, 0);
+        J2000.set(2000, Calendar.JANUARY, 0, 0, 0);
     }
 
     public class Planet implements Comparable<Planet> {
@@ -96,8 +96,6 @@ public class PlanetsLayer extends Layer {
     private Calendar mNow;
 
     public PlanetsLayer() {
-        mSun = new SunSprite();
-
         mPlanets = new Planet[] {
             new Planet("mercury", new Color(0x808080ff), 4780, 0.240846, 0.26),
             new Planet("venus", new Color(0xff9000ff), 12104, 0.615198, 0.49),
@@ -127,12 +125,12 @@ public class PlanetsLayer extends Layer {
 
     @Override
     public void queueAssets(AssetManager assets) {
-
+        SunSprite.loadAssets(assets);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
-
+        mSun = new SunSprite(assets);
     }
 
     @Override

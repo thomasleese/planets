@@ -14,12 +14,12 @@ import java.util.Calendar;
 
 public class ClockLayer extends Layer {
 
-    public static class Hand {
-
-        private static final Texture TEXTURE_HAND =
+    private static final Texture TEXTURE_HAND =
             new Texture(Gdx.files.internal("graphics/clock/hand.png"));
-        private static final Texture TEXTURE_DOT =
+    private static final Texture TEXTURE_DOT =
             new Texture(Gdx.files.internal("graphics/clock/week-day.png"));
+
+    public class Hand {
 
         private int mIndex;
         private int mTimeUnit;
@@ -28,9 +28,6 @@ public class ClockLayer extends Layer {
         private float mWidth;
         private boolean mIncludesWeekDay;
         private int mWeekDayDayDots;
-
-        private float mPlanetariumInitialRadius;
-        private float mPlanetariumGapRadius;
 
         public Hand(int index, int timeUnit, float width, boolean includesWeekDay) {
             mIndex = index;
@@ -120,12 +117,14 @@ public class ClockLayer extends Layer {
 
     private ClockMarkerSprite mMarkerSprite;
 
+    private Texture mHandTexture;
+    private Texture mWeekDayTexture;
+
     private Hand mHourHand;
     private Hand mMinuteHand;
     private Hand mSecondHand;
 
     public ClockLayer() {
-        mMarkerSprite = new ClockMarkerSprite(2, 6f);
         mHourHand = new Hand(3, Calendar.HOUR, HAND_WIDTH, false);
         mMinuteHand = new Hand(5, Calendar.MINUTE, HAND_WIDTH, false);
         mSecondHand = new Hand(7, Calendar.SECOND, HAND_WIDTH, true);
@@ -133,12 +132,18 @@ public class ClockLayer extends Layer {
 
     @Override
     public void queueAssets(AssetManager assets) {
+        assets.load("graphics/clock/hand.png", Texture.class);
+        assets.load("graphics/clock/week-day.png", Texture.class);
 
+        ClockMarkerSprite.loadAssets(assets);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
+        mHandTexture = assets.get("graphics/clock/hand.png");
+        mWeekDayTexture = assets.get("graphics/clock/week-day.png");
 
+        mMarkerSprite = new ClockMarkerSprite(2, 6f, assets);
     }
 
     @Override
