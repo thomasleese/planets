@@ -12,19 +12,27 @@ import java.util.Calendar;
 
 public class BackgroundLayer extends Layer {
 
+    private static final String TAG = "BackgroundLayer";
+
     private Pixmap mColourPixmap;
     private Color mColour = new Color();
 
-    public BackgroundLayer(AssetManager assets) {
-        mColourPixmap = assets.get("graphics/background/colour-gradient.png");
-    }
-
     public Color updateColour(Calendar now) {
         int progress = now.get(Calendar.HOUR) * 60 + now.get(Calendar.MINUTE);
-        float proportion = progress / (24 * 60 * 60);
+        float proportion = (float) (progress) / (float) (24 * 60);
         int colour = mColourPixmap.getPixel((int) (proportion * mColourPixmap.getWidth()), 0);
         mColour.set(colour);
         return mColour;
+    }
+
+    @Override
+    public void queueAssets(AssetManager assets) {
+        assets.load("graphics/background/colour-gradient.png", Pixmap.class);
+    }
+
+    @Override
+    public void loadAssets(AssetManager assets) {
+        mColourPixmap = assets.get("graphics/background/colour-gradient.png");
     }
 
     @Override

@@ -1,6 +1,7 @@
 package me.thomasleese.planets.layers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,6 +19,16 @@ public class OrbitsLayer extends Layer {
     private static final Texture TEXTURE = new Texture(Gdx.files.internal("graphics/orbit.png"));
 
     private TextureRegion mTexture;
+
+    @Override
+    public void queueAssets(AssetManager assets) {
+
+    }
+
+    @Override
+    public void loadAssets(AssetManager assets) {
+
+    }
 
     @Override
     public void resize(SizeManager sizes) {

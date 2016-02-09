@@ -1,6 +1,7 @@
 package me.thomasleese.planets.layers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -128,6 +129,16 @@ public class ClockLayer extends Layer {
         mHourHand = new Hand(3, Calendar.HOUR, HAND_WIDTH, false);
         mMinuteHand = new Hand(5, Calendar.MINUTE, HAND_WIDTH, false);
         mSecondHand = new Hand(7, Calendar.SECOND, HAND_WIDTH, true);
+    }
+
+    @Override
+    public void queueAssets(AssetManager assets) {
+
+    }
+
+    @Override
+    public void loadAssets(AssetManager assets) {
+
     }
 
     @Override

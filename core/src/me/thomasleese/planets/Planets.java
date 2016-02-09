@@ -34,10 +34,6 @@ public class Planets extends ApplicationAdapter {
 
     @Override
 	public void create () {
-        mAssets = new AssetManager();
-        mAssets.load("graphics/background/colour-gradient.png", Pixmap.class);
-        mAssets.finishLoading();
-
         mCamera = new OrthographicCamera();
         mSpriteBatch = new SpriteBatch();
 
@@ -46,18 +42,27 @@ public class Planets extends ApplicationAdapter {
         //mTimerLayer = new TimerLayer();
 
         mLayers.add(new BackgroundLayer());
-        /*mLayers.add(new StarfieldLayer());
-        mLayers.add(new ClockLayer());
+        //mLayers.add(new StarfieldLayer());
+        /*mLayers.add(new ClockLayer());
         mLayers.add(new OrbitsLayer());
         mLayers.add(mPlanetsLayer = new PlanetsLayer());
         mLayers.add(mRocketsLayer = new RocketsLayer(mTimerLayer));
         mLayers.add(new ShootingStarsLayer());
-        mLayers.add(mTimerLayer);
+        mLayers.add(mTimerLayer);*/
         mLayers.add(new HighlightShadowLayer());
 
-        InputMultiplexer input = new InputMultiplexer();
+        /*InputMultiplexer input = new InputMultiplexer();
         input.addProcessor(mRocketsLayer);
         Gdx.input.setInputProcessor(input);*/
+
+        mAssets = new AssetManager();
+        for (Layer layer : mLayers) {
+            layer.queueAssets(mAssets);
+        }
+        mAssets.finishLoading();
+        for (Layer layer : mLayers) {
+            layer.loadAssets(mAssets);
+        }
     }
 
     @Override

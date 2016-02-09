@@ -2,6 +2,7 @@ package me.thomasleese.planets.layers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
@@ -32,6 +33,16 @@ public class RocketsLayer extends Layer implements InputProcessor {
         mGhostSprite.setColor(0.75f, 0.75f, 0.75f, 0.75f);
 
         mTimer = timer;
+    }
+
+    @Override
+    public void queueAssets(AssetManager assets) {
+
+    }
+
+    @Override
+    public void loadAssets(AssetManager assets) {
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package me.thomasleese.planets.layers;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
@@ -122,6 +123,16 @@ public class PlanetsLayer extends Layer {
             planet.draw(batch, now, radius);
             radius += mSizes.getOrbitGap();
         }
+    }
+
+    @Override
+    public void queueAssets(AssetManager assets) {
+
+    }
+
+    @Override
+    public void loadAssets(AssetManager assets) {
+
     }
 
     @Override

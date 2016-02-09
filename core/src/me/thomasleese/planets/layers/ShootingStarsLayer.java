@@ -1,5 +1,6 @@
 package me.thomasleese.planets.layers;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.luckycatlabs.sunrisesunset.SunriseSunsetCalculator;
 import com.luckycatlabs.sunrisesunset.dto.Location;
@@ -23,6 +24,16 @@ public class ShootingStarsLayer extends Layer {
     public ShootingStarsLayer() {
         mSunriseSprite = new ShootingStarSprite();
         mSunsetSprite = new ShootingStarSprite();
+    }
+
+    @Override
+    public void queueAssets(AssetManager assets) {
+
+    }
+
+    @Override
+    public void loadAssets(AssetManager assets) {
+
     }
 
     @Override
