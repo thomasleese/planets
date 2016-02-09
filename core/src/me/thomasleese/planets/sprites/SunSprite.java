@@ -1,17 +1,16 @@
-package me.thomasleese.planets.util;
+package me.thomasleese.planets.sprites;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class SunSprite extends Sprite {
 
     private static final float TEXTURE_SIZE = 133.3f;
-    private static Texture TEXTURE =
-        new Texture(Gdx.files.internal("graphics/sun.png"));
 
-    public SunSprite() {
-        super(TEXTURE);
+    public SunSprite(AssetManager assets) {
+        super(assets.get("graphics/planets/sun.png", Texture.class));
 
         setOriginCenter();
         setCenter(0, 0);
@@ -23,6 +22,10 @@ public class SunSprite extends Sprite {
 
     public float getSize() {
         return getScaleX() * TEXTURE_SIZE;
+    }
+
+    public static void loadAssets(AssetManager assets) {
+        assets.load("graphics/planets/sun.png", Texture.class);
     }
 
 }

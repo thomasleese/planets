@@ -1,7 +1,9 @@
-package me.thomasleese.planets.util;
+package me.thomasleese.planets.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import me.thomasleese.planets.util.OrbitSprite;
+import me.thomasleese.planets.util.SizeManager;
 
 public class ShootingStarSprite extends OrbitSprite {
 
