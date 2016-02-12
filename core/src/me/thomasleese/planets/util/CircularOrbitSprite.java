@@ -15,12 +15,15 @@ public class CircularOrbitSprite extends OrbitSprite {
 
     private TextureRegion mTextureRegion;
     private float mRadius;
+    private RingShapeDrawer mDrawer;
 
     public CircularOrbitSprite(Texture texture, float radius) {
         super(texture);
 
         setScale(radius, radius);
         mTextureRegion = new TextureRegion(texture);
+
+        mDrawer = new RingShapeDrawer();
     }
 
     @Override
@@ -30,10 +33,8 @@ public class CircularOrbitSprite extends OrbitSprite {
 
     @Override
     public void draw(Batch batch) {
-        RingShapeDrawer drawer = new RingShapeDrawer();
-
         float width = 0.5f;
-        drawer.draw((PolygonSpriteBatch) batch, mTextureRegion,
+        mDrawer.draw((PolygonSpriteBatch) batch, mTextureRegion,
                 getX(), getY(), mRadius - width, mRadius + width);
     }
 

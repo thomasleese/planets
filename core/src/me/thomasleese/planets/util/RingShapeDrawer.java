@@ -114,9 +114,9 @@ public class RingShapeDrawer {
 
         int segments = (int) (outerRadius * 2f);
         float outerDiameter = outerRadius * 2f;
-        float innterDiameter = innerRadius * 2f;
+        float innerDiameter = innerRadius * 2f;
 
-        drawer.ellipse(outerDiameter, outerDiameter, innterDiameter, innterDiameter, segments, cx, cy, 0, 0, 0, -1);
+        drawer.ellipse(outerDiameter, outerDiameter, innerDiameter, innerDiameter, segments, cx, cy, 0, 0, 0, -1);
         drawer.draw(batch);
     }
 

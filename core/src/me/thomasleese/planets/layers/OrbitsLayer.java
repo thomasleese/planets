@@ -19,6 +19,11 @@ public class OrbitsLayer extends Layer {
 
     private SizeManager mSizes;
     private TextureRegion mRingTexture;
+    private RingShapeDrawer mDrawer;
+
+    public OrbitsLayer() {
+        mDrawer = new RingShapeDrawer();
+    }
 
     @Override
     public void queueAssets(AssetManager assets) {
@@ -38,15 +43,13 @@ public class OrbitsLayer extends Layer {
 
     @Override
     public void render(Batch batch) {
-        RingShapeDrawer drawer = new RingShapeDrawer();
-
         batch.begin();
 
         float w = 1f;
 
         for (int i = 0; i < 8; i++) {
             float radius = mSizes.getOrbitLength(i);
-            drawer.draw((PolygonSpriteBatch) batch, mRingTexture, 0, 0, radius - w, radius + w);
+            mDrawer.draw((PolygonSpriteBatch) batch, mRingTexture, 0, 0, radius - w, radius + w);
         }
 
         batch.end();
