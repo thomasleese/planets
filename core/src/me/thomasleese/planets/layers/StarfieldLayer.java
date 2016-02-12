@@ -35,7 +35,7 @@ public class StarfieldLayer extends Layer {
         }
 
         private void nextColour() {
-            mColour.a = MathUtils.random(0.3f, 1.0f);
+            mColour.a = MathUtils.random(0.1f, 0.7f);
             mChangeColourIn = MathUtils.random(0.15f, 1.50f);
         }
 
@@ -64,7 +64,7 @@ public class StarfieldLayer extends Layer {
 
         for (int x = -halfWidth; x < halfWidth; x++) {
             for (int y = -halfHeight; y < halfHeight; y++) {
-                if (MathUtils.random(2500) == 0) {
+                if (MathUtils.random(1250) == 0) {
                     mStars.add(new Star(x, y));
                 }
             }
