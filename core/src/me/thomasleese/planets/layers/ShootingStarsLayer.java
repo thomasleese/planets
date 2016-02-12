@@ -41,27 +41,14 @@ public class ShootingStarsLayer extends Layer {
     private void update() {
         Calendar now = Calendar.getInstance();
 
-        Calendar twoHoursAgo = Calendar.getInstance();
-        twoHoursAgo.add(Calendar.HOUR, -2);
+        Calendar sunrise = ClockUtils.getSunrise();
+        Calendar sunset = ClockUtils.getSunset();
 
-        if (mLastUpdate == null || twoHoursAgo.after(mLastUpdate)) {
-            Location location = new Location("50.923802050", "-1.3840690");
-            SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(location, "Europe/London");
+        mSunriseSprite.setOrbitAngle(ClockUtils.getSunriseAngle());
+        mSunsetSprite.setOrbitAngle(ClockUtils.getSunsetAngle());
 
-            mSunrise = calculator.getOfficialSunriseCalendarForDate(now);
-            mSunset = calculator.getOfficialSunsetCalendarForDate(now);
-
-            float sunriseAngle = ClockUtils.calculateRotation(Calendar.HOUR, mSunrise);
-            float sunsetAngle = ClockUtils.calculateRotation(Calendar.HOUR, mSunset);
-
-            mSunriseSprite.setOrbitAngle(sunriseAngle);
-            mSunsetSprite.setOrbitAngle(sunsetAngle);
-
-            mLastUpdate = now;
-        }
-
-        boolean afterSunrise = now.after(mSunrise);
-        boolean afterSunset = now.after(mSunset);
+        boolean afterSunrise = now.after(sunrise);
+        boolean afterSunset = now.after(sunset);
 
         if (afterSunrise && !afterSunset) {
             mSunriseSprite.setColor(.5f, .5f, .5f, .5f);

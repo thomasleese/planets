@@ -163,6 +163,7 @@ public class ClockLayer extends Layer {
         mSecondHand.draw(batch);
 
         mMarkerSprite.setOrbitAngle(0);
+        mMarkerSprite.setOrbitIndex(2);
         mMarkerSprite.setLength(12f);
         mMarkerSprite.draw(batch);
 
@@ -171,6 +172,13 @@ public class ClockLayer extends Layer {
             mMarkerSprite.setOrbitAngle(i * 30);
             mMarkerSprite.draw(batch);
         }
+
+        mMarkerSprite.setLength(10f);
+        mMarkerSprite.setOrbitIndex(7);
+        mMarkerSprite.setOrbitAngle(ClockUtils.getSunriseAngle());
+        mMarkerSprite.draw(batch);
+        mMarkerSprite.setOrbitAngle(ClockUtils.getSunsetAngle());
+        mMarkerSprite.draw(batch);
 
         batch.end();
     }

@@ -1,10 +1,16 @@
 package me.thomasleese.planets.util;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.luckycatlabs.sunrisesunset.SunriseSunsetCalculator;
+import com.luckycatlabs.sunrisesunset.dto.Location;
 
 import java.util.Calendar;
 
 public abstract class ClockUtils {
+
+    private static Calendar sSunrise, sSunset;
+    private static float sSunriseAngle, sSunsetAngle;
+    private static Calendar sLastSunriseSunsetUpdate;
 
     private static float calculateProportion(int timeUnit, Calendar now) {
         if (timeUnit == Calendar.HOUR) {
@@ -21,6 +27,46 @@ public abstract class ClockUtils {
     public static float calculateRotation(int timeUnit, Calendar now) {
         float proportion = calculateProportion(timeUnit, now);
         return (proportion * -MathUtils.PI2) * MathUtils.radiansToDegrees;
+    }
+
+    private static void calculateSunriseSunset() {
+        Calendar now = Calendar.getInstance();
+
+        Calendar twoHoursAgo = Calendar.getInstance();
+        twoHoursAgo.add(Calendar.HOUR, -2);
+
+        if (sLastSunriseSunsetUpdate == null || twoHoursAgo.after(sLastSunriseSunsetUpdate)) {
+            Location location = new Location("50.923802050", "-1.3840690");
+            SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(location, "Europe/London");
+
+            sSunrise = calculator.getOfficialSunriseCalendarForDate(now);
+            sSunset = calculator.getOfficialSunsetCalendarForDate(now);
+
+            sSunriseAngle = ClockUtils.calculateRotation(Calendar.HOUR, sSunrise);
+            sSunsetAngle = ClockUtils.calculateRotation(Calendar.HOUR, sSunset);
+
+            sLastSunriseSunsetUpdate = now;
+        }
+    }
+
+    public static Calendar getSunrise() {
+        calculateSunriseSunset();
+        return sSunrise;
+    }
+
+    public static Calendar getSunset() {
+        calculateSunriseSunset();
+        return sSunset;
+    }
+
+    public static float getSunriseAngle() {
+        calculateSunriseSunset();
+        return sSunriseAngle;
+    }
+
+    public static float getSunsetAngle() {
+        calculateSunriseSunset();
+        return sSunsetAngle;
     }
 
 }
