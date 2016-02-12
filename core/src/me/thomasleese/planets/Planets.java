@@ -63,6 +63,11 @@ public class Planets extends ApplicationAdapter {
     }
 
     @Override
+    public void dispose() {
+        mAssets.dispose();
+    }
+
+    @Override
     public void resize(int width, int height) {
         Gdx.app.log(TAG, "Resize: " + width + "x" + height);
 
