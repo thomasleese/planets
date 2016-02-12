@@ -73,9 +73,7 @@ public class RingShapeDrawer {
             currEx.position.set(centerX, centerY, centerZ);
             currEx.normal.set(normalX, normalY, normalZ);
             final short center = vertex(currEx);
-            float angle = 0f;
-            final float us = 0.5f * (innerWidth / width);
-            final float vs = 0.5f * (innerHeight / height);
+            float angle;
             short i1, i2 = 0, i3 = 0, i4 = 0;
             for (int i = 0; i <= divisions; i++) {
                 angle = ao + step * i;

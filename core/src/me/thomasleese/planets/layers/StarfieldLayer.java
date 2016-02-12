@@ -55,7 +55,7 @@ public class StarfieldLayer extends Layer {
     private Texture mStarTexture;
     private List<Star> mStars = new ArrayList<Star>();
 
-    public void generateStars(int width, int height) {
+    private void generateStars(int width, int height) {
         Gdx.app.log(TAG, "Generating stars for " + width + "x" + height + ".");
 
         int halfWidth = width / 2;

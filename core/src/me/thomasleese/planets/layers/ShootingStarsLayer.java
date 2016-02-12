@@ -38,7 +38,7 @@ public class ShootingStarsLayer extends Layer {
         mSunsetSprite.resize(sizes);
     }
 
-    public void update() {
+    private void update() {
         Calendar now = Calendar.getInstance();
 
         Calendar twoHoursAgo = Calendar.getInstance();

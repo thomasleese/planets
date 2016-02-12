@@ -10,6 +10,7 @@ public class DesktopLauncher {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 8);
+        config.setTitle("Planets");
         new Lwjgl3Application(new Planets(), config);
     }
 
