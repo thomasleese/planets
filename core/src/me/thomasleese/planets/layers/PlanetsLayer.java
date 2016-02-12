@@ -30,10 +30,10 @@ public class PlanetsLayer extends Layer {
 
         private float mX, mY;
 
-        public Planet(String name, Color colour, float diameter, double orbitalPeriod, double orbitAt2000) {
+        public Planet(AssetManager assets, String name, Color colour, float diameter, double orbitalPeriod, double orbitAt2000) {
             mName = name;
 
-            mBall = new GlassBall(colour);
+            mBall = new GlassBall(colour, assets);
 
             mDiameter = diameter;
             mOrbitalPeriod = orbitalPeriod;
@@ -95,22 +95,6 @@ public class PlanetsLayer extends Layer {
 
     private Calendar mNow;
 
-    public PlanetsLayer() {
-        mPlanets = new Planet[] {
-            new Planet("mercury", new Color(0x808080ff), 4780, 0.240846, 0.26),
-            new Planet("venus", new Color(0xff9000ff), 12104, 0.615198, 0.49),
-            new Planet("earth", new Color(0x00c050ff), 12756, 1, 0.75),
-            new Planet("mars", new Color(0xef1000ff), 6780, 1.881, 0.01),
-            new Planet("jupiter", new Color(0xe0a070ff), 139822, 11.86, 0.785),
-            new Planet("saturn", new Color(0xefb020ff), 116464, 29.46, 0.75),
-            new Planet("uranus", new Color(0x00b0c0ff), 50724, 84.01, 0.12),
-            new Planet("neptune", new Color(0x1540ffff), 49248, 164.8, 0.13),
-        };
-
-        mPlanetsBySize = Arrays.copyOf(mPlanets, mPlanets.length);
-        Arrays.sort(mPlanetsBySize);
-    }
-
     private void drawSun(Batch batch) {
         mSun.draw(batch);
     }
@@ -126,11 +110,26 @@ public class PlanetsLayer extends Layer {
     @Override
     public void queueAssets(AssetManager assets) {
         SunSprite.loadAssets(assets);
+        GlassBall.loadAssets(assets);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
         mSun = new SunSprite(assets);
+
+        mPlanets = new Planet[] {
+                new Planet(assets, "mercury", new Color(0x808080ff), 4780, 0.240846, 0.26),
+                new Planet(assets, "venus", new Color(0xff9000ff), 12104, 0.615198, 0.49),
+                new Planet(assets, "earth", new Color(0x00c050ff), 12756, 1, 0.75),
+                new Planet(assets, "mars", new Color(0xef1000ff), 6780, 1.881, 0.01),
+                new Planet(assets, "jupiter", new Color(0xe0a070ff), 139822, 11.86, 0.785),
+                new Planet(assets, "saturn", new Color(0xefb020ff), 116464, 29.46, 0.75),
+                new Planet(assets, "uranus", new Color(0x00b0c0ff), 50724, 84.01, 0.12),
+                new Planet(assets, "neptune", new Color(0x1540ffff), 49248, 164.8, 0.13),
+        };
+
+        mPlanetsBySize = Arrays.copyOf(mPlanets, mPlanets.length);
+        Arrays.sort(mPlanetsBySize);
     }
 
     @Override

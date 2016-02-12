@@ -1,6 +1,7 @@
 package me.thomasleese.planets.util;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -15,29 +16,20 @@ import com.badlogic.gdx.math.Matrix4;
 
 public class GlassBall {
 
-    private static final Texture TEXTURE_BACKGROUND =
-        new Texture(Gdx.files.internal("graphics/glass-ball/background.png"));
-    private static final Texture TEXTURE_BALL =
-        new Texture(Gdx.files.internal("graphics/glass-ball/ball.png"));
-    private static final Texture TEXTURE_SHADOW =
-        new Texture(Gdx.files.internal("graphics/glass-ball/shadow.png"));
-
     private Sprite mBallSprite;
     private Sprite mShadowSprite;
-    private boolean mHasShadow;
     private float mSize;
 
-    public GlassBall(Color colour) {
-        mBallSprite = new Sprite(makeTexture(colour));
+    public GlassBall(Color colour, AssetManager assets) {
+        mBallSprite = new Sprite(makeTexture(colour, assets));
         mBallSprite.setOriginCenter();
         mBallSprite.setAlpha(1.0f);
 
-        mShadowSprite = new Sprite(TEXTURE_SHADOW);
+        Texture shadowTexture = assets.get("graphics/glass-ball/shadow.png");
+        mShadowSprite = new Sprite(shadowTexture);
         mShadowSprite.setOriginCenter();
         mShadowSprite.setColor(colour);
         mShadowSprite.setAlpha(0.8f);
-
-        mHasShadow = true;
 
         setSize(100);
         setCenter(0, 0);
@@ -67,19 +59,12 @@ public class GlassBall {
         mShadowSprite.setRotation(rotation);
     }
 
-    public void hideShadow() {
-        mHasShadow = false;
-    }
-
     public void draw(Batch batch) {
-        if (mHasShadow) {
-            mShadowSprite.draw(batch);
-        }
-
+        mShadowSprite.draw(batch);
         mBallSprite.draw(batch);
     }
 
-    private TextureRegion makeTexture(Color colour) {
+    private TextureRegion makeTexture(Color colour, AssetManager assets) {
         int size = 100;
 
         FrameBuffer fbo = new FrameBuffer(Pixmap.Format.RGBA8888, size, size, false);
@@ -103,11 +88,15 @@ public class GlassBall {
         batch.enableBlending();
         batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_DST_ALPHA);
 
+        Texture backgroundTexture = assets.get("graphics/glass-ball/background.png");
+
         batch.setColor(colour.r, colour.g, colour.b, 0.75f);
-        batch.draw(TEXTURE_BACKGROUND, 0, 0, size, size);
+        batch.draw(backgroundTexture, 0, 0, size, size);
+
+        Texture ballTexture = assets.get("graphics/glass-ball/ball.png");
 
         batch.setColor(Color.WHITE);
-        batch.draw(TEXTURE_BALL, 0, 0, size, size);
+        batch.draw(ballTexture, 0, 0, size, size);
 
         batch.end();
 
@@ -118,6 +107,12 @@ public class GlassBall {
         HdpiUtils.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         return texture;
+    }
+
+    public static void loadAssets(AssetManager assets) {
+        assets.load("graphics/glass-ball/background.png", Texture.class);
+        assets.load("graphics/glass-ball/shadow.png", Texture.class);
+        assets.load("graphics/glass-ball/ball.png", Texture.class);
     }
 
 }

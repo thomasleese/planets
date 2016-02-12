@@ -19,9 +19,6 @@ public class TimerLayer extends Layer {
 
     private static final String TAG = "Timer";
 
-    private static final Texture TEXTURE_CIRCLE =
-        new Texture(Gdx.files.internal("graphics/timer/circle.png"));
-
     public enum State {
         INACTIVE,
         PREPARING,
@@ -39,9 +36,6 @@ public class TimerLayer extends Layer {
 
     public TimerLayer() {
         loadFonts();
-
-        mSprite = new CircularOrbitSprite(TEXTURE_CIRCLE, 20f);
-        mSprite.setOrbitIndex(8.3f);
     }
 
     private void loadFonts() {
@@ -76,12 +70,14 @@ public class TimerLayer extends Layer {
 
     @Override
     public void queueAssets(AssetManager assets) {
-
+        assets.load("graphics/timer/circle.png", Texture.class);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
-
+        Texture texture = assets.get("graphics/timer/circle.png");
+        mSprite = new CircularOrbitSprite(texture, 20f);
+        mSprite.setOrbitIndex(8.3f);
     }
 
     @Override
