@@ -49,7 +49,6 @@ public class Planets extends ApplicationAdapter {
         mLayers.add(mRocketsLayer = new RocketsLayer(mTimerLayer));
         mLayers.add(new ShootingStarsLayer());
         mLayers.add(mTimerLayer);
-        mLayers.add(new HighlightShadowLayer());
 
         InputMultiplexer input = new InputMultiplexer();
         input.addProcessor(mRocketsLayer);
