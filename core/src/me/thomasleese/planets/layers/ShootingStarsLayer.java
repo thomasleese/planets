@@ -4,8 +4,8 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.luckycatlabs.sunrisesunset.SunriseSunsetCalculator;
 import com.luckycatlabs.sunrisesunset.dto.Location;
-import me.thomasleese.planets.util.ClockUtils;
 import me.thomasleese.planets.sprites.ShootingStarSprite;
+import me.thomasleese.planets.util.ClockUtils;
 import me.thomasleese.planets.util.SizeManager;
 
 import java.util.Calendar;

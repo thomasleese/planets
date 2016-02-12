@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import me.thomasleese.planets.util.ClockUtils;
 import me.thomasleese.planets.sprites.RocketSprite;
+import me.thomasleese.planets.util.ClockUtils;
 import me.thomasleese.planets.util.SizeManager;
 
 import java.util.Calendar;

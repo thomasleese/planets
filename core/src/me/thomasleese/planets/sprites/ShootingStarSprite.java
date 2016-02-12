@@ -1,6 +1,5 @@
 package me.thomasleese.planets.sprites;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import me.thomasleese.planets.util.OrbitSprite;
