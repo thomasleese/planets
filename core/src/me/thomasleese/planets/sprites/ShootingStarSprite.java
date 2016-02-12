@@ -16,7 +16,7 @@ public class ShootingStarSprite extends OrbitSprite {
 
     @Override
     public void resize(SizeManager sizes) {
-        float scale = sizes.getScreenSize() / 1500f;
+        float scale = sizes.getScreenSize() / 3000f;
         setScale(scale, scale);
 
         super.resize(sizes);

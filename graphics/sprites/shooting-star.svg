@@ -17,8 +17,8 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="shooting-star.svg"
    inkscape:export-filename="/Users/ThomasLeese/Documents/Projects/Planets/android/assets/graphics/sprites/shooting-star.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
   <defs
      id="defs8465">
     <filter
@@ -43,7 +43,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="32.899348"
+     inkscape:cx="33.151886"
      inkscape:cy="45.232807"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -62,7 +62,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
