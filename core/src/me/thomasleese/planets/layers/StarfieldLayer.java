@@ -15,25 +15,6 @@ public class StarfieldLayer extends Layer {
 
     private static final String TAG = "Starfield";
 
-    private static final Color[] STAR_COLOURS = new Color[] {
-            // whites
-            new Color(0.9f, 0.9f, 0.9f, 0.9f), new Color(0.85f, 0.85f, 0.85f, 0.85f),
-            new Color(0.8f, 0.8f, 0.8f, 0.8f), new Color(0.75f, 0.75f, 0.75f, 0.75f),
-            new Color(0.7f, 0.7f, 0.7f, 0.7f), new Color(0.65f, 0.65f, 0.65f, 0.65f),
-            new Color(0.6f, 0.6f, 0.6f, 0.6f), new Color(0.55f, 0.55f, 0.55f, 0.55f),
-            new Color(0.5f, 0.5f, 0.5f, 0.5f), new Color(0.45f, 0.45f, 0.45f, 0.45f),
-            new Color(0.4f, 0.4f, 0.4f, 0.4f),
-
-            // reds
-            new Color(0.7f, 0.5f, 0.5f, 0.6f), new Color(0.9f, 0.6f, 0.6f, 0.6f),
-
-            // greens
-            new Color(0.5f, 0.7f, 0.5f, 0.6f), new Color(0.6f, 0.9f, 0.6f, 0.6f),
-
-            // blues
-            new Color(0.5f, 0.5f, 0.7f, 0.6f), new Color(0.6f, 0.6f, 0.9f, 0.6f),
-    };
-
     public class Star {
 
         private float mCentreX, mCentreY;
@@ -47,13 +28,14 @@ public class StarfieldLayer extends Layer {
             mDiameter = radius * 2f;
             mCentreX = x - radius;
             mCentreY = y - radius;
+            mColour = new Color(1f, 1f, 1f, 1f);
 
             nextColour();
         }
 
         private void nextColour() {
-            mChangeColourIn = MathUtils.random(0f, 1.5f);
-            mColour = STAR_COLOURS[MathUtils.random(STAR_COLOURS.length - 1)];
+            mColour.a = MathUtils.random(0.3f, 1.0f);
+            mChangeColourIn = MathUtils.random(0.15f, 1.50f);
         }
 
         public void update(float dt) {
@@ -81,11 +63,13 @@ public class StarfieldLayer extends Layer {
 
         for (int x = -halfWidth; x < halfWidth; x++) {
             for (int y = -halfHeight; y < halfHeight; y++) {
-                if (MathUtils.random(300) == 0) {
+                if (MathUtils.random(2500) == 0) {
                     mStars.add(new Star(x, y));
                 }
             }
         }
+
+        Gdx.app.log(TAG, "Made " + mStars.size() + " stars.");
     }
 
     @Override
