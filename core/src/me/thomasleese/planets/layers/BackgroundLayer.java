@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import me.thomasleese.planets.util.SizeManager;
 
@@ -14,40 +15,35 @@ public class BackgroundLayer extends Layer {
 
     private static final String TAG = "BackgroundLayer";
 
-    private Pixmap mColourPixmap;
-    private Color mColour = new Color();
-
-    public Color updateColour(Calendar now) {
-        int progress = now.get(Calendar.HOUR) * 60 + now.get(Calendar.MINUTE);
-        float proportion = (float) (progress) / (float) (24 * 60);
-        int colour = mColourPixmap.getPixel((int) (proportion * mColourPixmap.getWidth()), 0);
-        mColour.set(colour);
-        return mColour;
-    }
+    private Texture mTexture;
+    private Color mColour;
+    private float mSize, mHalfSize;
 
     @Override
     public void queueAssets(AssetManager assets) {
-        assets.load("graphics/background/colour-gradient.png", Pixmap.class);
+        assets.load("graphics/background.png", Texture.class);
     }
 
     @Override
     public void loadAssets(AssetManager assets) {
-        mColourPixmap = assets.get("graphics/background/colour-gradient.png");
+        mTexture = assets.get("graphics/background.png");
+        mColour = new Color(0, 10f / 256f, 68f / 256f, 1f);
     }
 
     @Override
     public void resize(SizeManager sizes) {
-
+        mSize = Math.min(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        mHalfSize = mSize / 2f;
     }
 
     @Override
     public void render(Batch batch) {
-        Calendar now = Calendar.getInstance();
-
-        Color colour = updateColour(now);
-
-        Gdx.gl.glClearColor(colour.r, colour.g, colour.b, 1);
+        Gdx.gl.glClearColor(mColour.r, mColour.g, mColour.b, mColour.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        batch.begin();
+        batch.draw(mTexture, -mHalfSize, -mHalfSize, mSize, mSize);
+        batch.end();
     }
 
 }
