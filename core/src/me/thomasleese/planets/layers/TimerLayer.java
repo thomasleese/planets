@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.Align;
-import me.thomasleese.planets.util.CircularOrbitSprite;
+import me.thomasleese.planets.sprites.CircularOrbitSprite;
 import me.thomasleese.planets.util.ClockUtils;
 import me.thomasleese.planets.util.SizeManager;
 

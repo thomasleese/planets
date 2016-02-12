@@ -4,9 +4,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import me.thomasleese.planets.util.ClockMarkerSprite;
+import me.thomasleese.planets.sprites.ClockMarkerSprite;
 import me.thomasleese.planets.util.ClockUtils;
-import me.thomasleese.planets.util.OrbitSprite;
+import me.thomasleese.planets.sprites.OrbitSprite;
 import me.thomasleese.planets.util.SizeManager;
 
 import java.util.Calendar;

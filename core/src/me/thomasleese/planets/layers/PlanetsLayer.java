@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import me.thomasleese.planets.sprites.SunSprite;
-import me.thomasleese.planets.util.GlassBall;
+import me.thomasleese.planets.sprites.GlassBall;
 import me.thomasleese.planets.util.SizeManager;
 
 import java.util.Arrays;

@@ -1,9 +1,10 @@
-package me.thomasleese.planets.util;
+package me.thomasleese.planets.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import me.thomasleese.planets.util.RingShapeDrawer;
 
 public class CircularOrbitSprite extends OrbitSprite {
 

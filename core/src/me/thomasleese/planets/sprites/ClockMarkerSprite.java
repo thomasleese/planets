@@ -1,4 +1,4 @@
-package me.thomasleese.planets.util;
+package me.thomasleese.planets.sprites;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
