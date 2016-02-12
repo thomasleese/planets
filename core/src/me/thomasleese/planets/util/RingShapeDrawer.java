@@ -112,7 +112,7 @@ public class RingShapeDrawer {
         Drawer drawer = new Drawer();
         drawer.setTextureRegion(texture);
 
-        int segments = (int) (outerRadius / 1.5f);
+        int segments = (int) (outerRadius * 2f);
         float outerDiameter = outerRadius * 2f;
         float innterDiameter = innerRadius * 2f;
 

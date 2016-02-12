@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import me.thomasleese.planets.layers.*;
 import me.thomasleese.planets.util.SizeManager;
@@ -23,7 +25,7 @@ public class Planets extends ApplicationAdapter {
 	private AssetManager mAssets;
 
     private OrthographicCamera mCamera;
-    private SpriteBatch mSpriteBatch;
+    private Batch mSpriteBatch;
 
     private SizeManager mSizes;
 
@@ -35,7 +37,7 @@ public class Planets extends ApplicationAdapter {
     @Override
 	public void create () {
         mCamera = new OrthographicCamera();
-        mSpriteBatch = new SpriteBatch();
+        mSpriteBatch = new PolygonSpriteBatch();
 
         mSizes = new SizeManager();
 

@@ -74,14 +74,6 @@ public class TimerLayer extends Layer {
         return mState == State.PREPARING || mState == State.ACTIVE;
     }
 
-    private String padZero(int value) {
-        if (value < 10) {
-            return "0" + value;
-        } else {
-            return "" + value;
-        }
-    }
-
     @Override
     public void queueAssets(AssetManager assets) {
 

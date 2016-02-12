@@ -14,11 +14,6 @@ import java.util.Calendar;
 
 public class ClockLayer extends Layer {
 
-    private static final Texture TEXTURE_HAND =
-            new Texture(Gdx.files.internal("graphics/clock/hand.png"));
-    private static final Texture TEXTURE_DOT =
-            new Texture(Gdx.files.internal("graphics/clock/week-day.png"));
-
     public class Hand {
 
         private int mIndex;
@@ -37,12 +32,12 @@ public class ClockLayer extends Layer {
             mWidth = width;
             mIncludesWeekDay = includesWeekDay;
 
-            mSprite = new Sprite(TEXTURE_HAND);
+            mSprite = new Sprite(mHandTexture);
             mSprite.setOrigin(0.5f, 0f);
             mSprite.setCenter(0, 0);
 
             if (includesWeekDay) {
-                mDotSprite = new OrbitSprite(TEXTURE_DOT);
+                mDotSprite = new OrbitSprite(mWeekDayTexture);
                 mDotSprite.setOriginCenter();
                 mDotSprite.setScale(0.4f, 0.4f);
             }
@@ -124,12 +119,6 @@ public class ClockLayer extends Layer {
     private Hand mMinuteHand;
     private Hand mSecondHand;
 
-    public ClockLayer() {
-        mHourHand = new Hand(3, Calendar.HOUR, HAND_WIDTH, false);
-        mMinuteHand = new Hand(5, Calendar.MINUTE, HAND_WIDTH, false);
-        mSecondHand = new Hand(7, Calendar.SECOND, HAND_WIDTH, true);
-    }
-
     @Override
     public void queueAssets(AssetManager assets) {
         assets.load("graphics/clock/hand.png", Texture.class);
@@ -144,6 +133,10 @@ public class ClockLayer extends Layer {
         mWeekDayTexture = assets.get("graphics/clock/week-day.png");
 
         mMarkerSprite = new ClockMarkerSprite(2, 6f, assets);
+
+        mHourHand = new Hand(3, Calendar.HOUR, HAND_WIDTH, false);
+        mMinuteHand = new Hand(5, Calendar.MINUTE, HAND_WIDTH, false);
+        mSecondHand = new Hand(7, Calendar.SECOND, HAND_WIDTH, true);
     }
 
     @Override

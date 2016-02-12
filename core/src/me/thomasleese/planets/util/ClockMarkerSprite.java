@@ -15,7 +15,7 @@ public class ClockMarkerSprite extends OrbitSprite {
     }
 
     public void setLength(float length) {
-        setScale(length, 0.4f);
+        setScale(length, 2f);
     }
 
     public static void loadAssets(AssetManager assets) {
