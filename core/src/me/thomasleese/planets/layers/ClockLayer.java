@@ -146,6 +146,12 @@ public class ClockLayer extends Layer {
         mMarkerSprite.resize(sizes);
     }
 
+    private void renderMonthMark(Batch batch, int day) {
+        float angle = (day / 365f) * 360f;
+        mMarkerSprite.setOrbitAngle(angle);
+        mMarkerSprite.draw(batch);
+    }
+
     @Override
     public void render(Batch batch) {
         Calendar now = Calendar.getInstance();
@@ -168,10 +174,20 @@ public class ClockLayer extends Layer {
         mMarkerSprite.draw(batch);
 
         mMarkerSprite.setLength(6f);
-        for (int i = 1; i < 12; i++) {
-            mMarkerSprite.setOrbitAngle(i * 30);
-            mMarkerSprite.draw(batch);
-        }
+
+        renderMonthMark(batch, 0); // jan
+        renderMonthMark(batch, 31); // feb
+        renderMonthMark(batch, 31 + 28); // mar
+        renderMonthMark(batch, 31 + 28 + 31); // apr
+        renderMonthMark(batch, 31 + 28 + 31 + 30); // may
+        renderMonthMark(batch, 31 + 28 + 31 + 30 + 31); // jun
+        renderMonthMark(batch, 31 + 28 + 31 + 30 + 31 + 30); // jul
+        renderMonthMark(batch, 31 + 28 + 31 + 30 + 31 + 30 + 31); // aug
+        renderMonthMark(batch, 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31); // sep
+        renderMonthMark(batch, 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30); // oct
+        renderMonthMark(batch, 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31); // nov
+        renderMonthMark(batch, 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30); // dec
+        //renderMonthMark(batch, 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31); // march
 
         mMarkerSprite.setLength(10f);
         mMarkerSprite.setOrbitIndex(7);

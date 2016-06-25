@@ -37,7 +37,7 @@ public class PlanetsLayer extends Layer {
 
             mDiameter = diameter;
             mOrbitalPeriod = orbitalPeriod;
-            mOrbitAt2000 = orbitAt2000;
+            mOrbitAt2000 = ((orbitAt2000 - 90) / 360f);
         }
 
         @Override
@@ -118,14 +118,14 @@ public class PlanetsLayer extends Layer {
         mSun = new SunSprite(assets);
 
         mPlanets = new Planet[] {
-                new Planet(assets, "mercury", new Color(0x808080ff), 4780, 0.240846, 0.26),
-                new Planet(assets, "venus", new Color(0xff9000ff), 12104, 0.615198, 0.49),
-                new Planet(assets, "earth", new Color(0x00c050ff), 12756, 1, 0.75),
-                new Planet(assets, "mars", new Color(0xef1000ff), 6780, 1.881, 0.01),
-                new Planet(assets, "jupiter", new Color(0xe0a070ff), 139822, 11.86, 0.785),
-                new Planet(assets, "saturn", new Color(0xefb020ff), 116464, 29.46, 0.75),
-                new Planet(assets, "uranus", new Color(0x00b0c0ff), 50724, 84.01, 0.12),
-                new Planet(assets, "neptune", new Color(0x1540ffff), 49248, 164.8, 0.13),
+                new Planet(assets, "mercury", new Color(0x808080ff), 4780, 0.240846, 208.03f),
+                new Planet(assets, "venus", new Color(0xff9000ff), 12104, 0.615198, 278.75f),
+                new Planet(assets, "earth", new Color(0x00c050ff), 12756, 1, 0f),
+                new Planet(assets, "mars", new Color(0xef1000ff), 6780, 1.881, 100.99f),
+                new Planet(assets, "jupiter", new Color(0xe0a070ff), 139822, 11.86, 63.41f),
+                new Planet(assets, "saturn", new Color(0xefb020ff), 116464, 29.46, 54.66f),
+                new Planet(assets, "uranus", new Color(0x00b0c0ff), 50724, 84.01, 149.55f),
+                new Planet(assets, "neptune", new Color(0x1540ffff), 49248, 164.8, 159.62f),
         };
 
         mPlanetsBySize = Arrays.copyOf(mPlanets, mPlanets.length);
